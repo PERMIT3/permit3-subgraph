@@ -1,0 +1,8 @@
+{
+  "starknet-mainnet": {
+    "Contract": {
+      "address": "",
+      "startBlock": 0
+    }
+  }
+}

@@ -1,0 +1,25 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: starknet
+    name: Permit3
+    network: starknet-mainnet
+    source:
+      address: "0x06101cbaf7686b48102b75dc85925020ed61671ab13837e856085db8e6bea457"
+      startBlock: 539491
+    mapping:
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - DidSetPermit
+        - DidConsumePermit
+      abis:
+        - name: Permit3
+          file: ./abis/Permit3.json
+      eventHandlers:
+        - event: DidSetPermit
+          handler: handleDidSetPermit
+        - event: DidConsumePermit
+          handler: handleDidConsumePermit
+      file: ./src/permit3.ts

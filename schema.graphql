@@ -1,0 +1,37 @@
+# Global
+type Global @entity {
+  id: String!
+  counter: Int!
+}
+
+# Permit3
+enum PermitEventType {
+  DidSetPermit
+  DidConsumePermit
+}
+
+type Permit @entity {
+  id: Bytes!
+  creationTimestamp: BigInt!
+  creationTransactionHash: Bytes!
+  from: Bytes!
+  operator: Bytes!
+  contract: Bytes!
+  rights: String!
+  number: BigInt!
+}
+
+type PermitEvent @entity {
+  id: Bytes!
+  type: PermitEventType!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+  permit: Permit!
+}
+
+type User @entity {
+  id: Bytes!
+  asFrom: Int!
+  asOperator: Int!
+  asContract: Int!
+}

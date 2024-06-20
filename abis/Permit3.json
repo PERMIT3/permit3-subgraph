@@ -1,0 +1,16 @@
+[
+  {
+    "type": "event",
+    "name": "DidSetPermit",
+    "keys": [],
+    "data": [],
+    "inputs": []
+  },
+  {
+    "type": "event",
+    "name": "DidConsumePermit",
+    "keys": [],
+    "data": [],
+    "inputs": []
+  }
+]

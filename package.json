@@ -1,0 +1,21 @@
+{
+  "name": "permit3-subgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ permit3-subgraph",
+    "create-local": "graph create --node http://localhost:8020/ permit3-subgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ permit3-subgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 permit3-subgraph",
+    "deploy-suite-remote": "graph deploy --node {$node} --ipfs ${ipfs} permit3/mainnet-beta",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@starknet-graph/graph-cli": "0.58.0-1",
+    "@starknet-graph/graph-ts": "0.31.0"
+  },
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
+}
