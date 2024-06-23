@@ -18,9 +18,9 @@ function getAndIncrementGlobalCounter(): Bytes {
 
 function updateUserEntity(
   id: Bytes,
-  asFrom: number,
-  asOperator: number,
-  asContract: number
+  asFrom: i32,
+  asOperator: i32,
+  asContract: i32
 ): void {
   let entity = User.load(id);
   if (entity == null) {
@@ -59,9 +59,9 @@ export function handleDidSetPermit(event: DidSetPermitEvent): void {
     permitEntity.operator = operator;
     permitEntity.contract = contract;
     permitEntity.rights = rights.toHexString();
-    permitEntity.number = BigInt.fromU32(0);
+    permitEntity.number = BigInt.fromI32(0);
   }
-  if (permitEntity.number.equals(BigInt.fromU32(0))) {
+  if (permitEntity.number.equals(BigInt.fromI32(0))) {
     updateUserEntity(from, 1, 0, 0);
     updateUserEntity(operator, 0, 1, 0);
     updateUserEntity(contract, 0, 0, 1);
@@ -90,8 +90,8 @@ export function handleDidConsumePermit(event: DidConsumePermitEvent): void {
   eventEntity.save();
 
   let permitEntity = Permit.load(permitEntityId)!;
-  permitEntity.number = permitEntity.number.minus(BigInt.fromU32(1));
-  if (permitEntity.number.equals(BigInt.fromU32(0))) {
+  permitEntity.number = permitEntity.number.minus(BigInt.fromI32(1));
+  if (permitEntity.number.equals(BigInt.fromI32(0))) {
     updateUserEntity(from, -1, 0, 0);
     updateUserEntity(operator, 0, -1, 0);
     updateUserEntity(contract, 0, 0, -1);
